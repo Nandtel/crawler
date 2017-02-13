@@ -1,6 +1,6 @@
 #Crawler
 
-## How to run:
+## How to run
 
 ### As jar:
 Clone repo: 
