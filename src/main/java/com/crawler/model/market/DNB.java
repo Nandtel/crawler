@@ -10,6 +10,7 @@ public class DNB implements Market {
     private final String selector;
     private final String home;
     private final String away;
+    private final String descStartWith;
 
     public DNB(String home, String away, String selector) {
         this.home = home;
@@ -17,6 +18,7 @@ public class DNB implements Market {
         this.selector = selector;
 
         this.type = Type.DNB;
+        this.descStartWith = "Ничья ставки нет";
     }
 
     @Override
@@ -35,5 +37,10 @@ public class DNB implements Market {
     @Override
     public String getSelector() {
         return selector;
+    }
+
+    @Override
+    public String getDescStartWith() {
+        return descStartWith;
     }
 }

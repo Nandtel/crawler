@@ -10,6 +10,7 @@ public class DC implements Market {
     private final String selector;
     private final String home;
     private final String away;
+    private final String descStartWith;
 
     public DC(String home, String away, String selector) {
         this.home = home;
@@ -17,6 +18,7 @@ public class DC implements Market {
         this.selector = selector;
 
         this.type = Type.DC;
+        this.descStartWith = "Двойной шанс";
     }
 
     @Override
@@ -41,5 +43,10 @@ public class DC implements Market {
     @Override
     public String getSelector() {
         return selector;
+    }
+
+    @Override
+    public String getDescStartWith() {
+        return descStartWith;
     }
 }

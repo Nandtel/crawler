@@ -8,11 +8,13 @@ import java.util.NoSuchElementException;
 public class OU implements Market {
     private final Type type;
     private final String selector;
+    private final String descStartWith;
 
     public OU(String selector) {
         this.selector = selector;
 
         this.type = Type.OU;
+        this.descStartWith = "Тотал голов в матче больше";
     }
 
     @Override
@@ -34,5 +36,10 @@ public class OU implements Market {
     @Override
     public String getSelector() {
         return selector;
+    }
+
+    @Override
+    public String getDescStartWith() {
+        return descStartWith;
     }
 }

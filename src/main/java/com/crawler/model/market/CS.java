@@ -8,11 +8,13 @@ import java.util.NoSuchElementException;
 public class CS implements Market {
     private final Type type;
     private final String selector;
+    private final String descStartWith;
 
     public CS(String selector) {
         this.selector = selector;
 
         this.type = Type.CS;
+        this.descStartWith = "Точный счет";
     }
 
     @Override
@@ -31,5 +33,10 @@ public class CS implements Market {
     @Override
     public String getSelector() {
         return selector;
+    }
+
+    @Override
+    public String getDescStartWith() {
+        return descStartWith;
     }
 }

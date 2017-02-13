@@ -10,6 +10,7 @@ public class X12 implements Market {
     private final String selector;
     private final String home;
     private final String away;
+    private final String descStartWith;
 
     public X12(String home, String away, String selector) {
         this.home = home;
@@ -17,6 +18,7 @@ public class X12 implements Market {
         this.selector = selector;
 
         this.type = Type.X12;
+        this.descStartWith = "1 X 2";
     }
 
     @Override
@@ -37,6 +39,11 @@ public class X12 implements Market {
     @Override
     public String getSelector() {
         return selector;
+    }
+
+    @Override
+    public String getDescStartWith() {
+        return descStartWith;
     }
 
 }
