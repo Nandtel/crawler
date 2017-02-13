@@ -14,7 +14,7 @@ cd crawler
 ./gradlew build
 ```
 
-And now you cac run app:
+And now you can run app:
 ```
 java -jar ./build/libs/crawler-0.0.1-SNAPSHOT.jar
 ```
