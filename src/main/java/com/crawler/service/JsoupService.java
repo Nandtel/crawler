@@ -53,8 +53,11 @@ public class JsoupService {
     public Map<String, List<Ratio>> getGroupedRatios(Elements marketsContainer, List<Market> markets) {
         return markets
                 .parallelStream()
-                .flatMap(market -> marketsContainer.select(market.getSelector())
-                        .stream()
+                .flatMap(market -> marketsContainer.parallelStream()
+                        .filter(el -> el.select("thead>tr>th.leftPad>span").text().toLowerCase()
+                                    .startsWith(market.getDescStartWith().toLowerCase()))
+                        .map(el -> el.select(market.getSelector()))
+                        .flatMap(Collection::stream)
                         .map(market::getRatio))
                 .collect(groupingBy(ratio -> ratio.getType().toString()));
     }
@@ -65,20 +68,15 @@ public class JsoupService {
         String homeTeamName = getTeamName(page, "#contentHead h2", 0);
         String awayTeamName = getTeamName(page, "#contentHead h2", 2);
         String startedAtDate = getStartedAtDate(page, "#contentHead > span#eventDetailsHeader span", "Закрытие :");
-        Elements marketsContainer = getMarketsContainer(page, "div#allMarketsTab div#primaryCollectionContainer");
+        Elements marketsContainer = getMarketsContainer(page, "div#allMarketsTab div#primaryCollectionContainer .marketHolderExpanded");
 
         List<Market> markets = Arrays.asList(
-                new X12(homeTeamName, awayTeamName, ".marketHolderExpanded:nth-child(1) td"),
-                new DC(homeTeamName, awayTeamName,".marketHolderExpanded:nth-child(25) td"),
-                new BTS(".marketHolderExpanded:nth-child(32) td"),
+                new X12(homeTeamName, awayTeamName, "td"),
+                new DC(homeTeamName, awayTeamName,"td"),
+                new BTS("td"),
                 new CS(".marketHolderExpanded:nth-child(6) td li"),
-                new DNB(homeTeamName, awayTeamName, ".marketHolderExpanded:nth-child(24) td"),
-                new OU(".marketHolderExpanded:nth-child(26) td, " +
-                        ".marketHolderExpanded:nth-child(27) td, " +
-                        ".marketHolderExpanded:nth-child(28) td, " +
-                        ".marketHolderExpanded:nth-child(29) td, " +
-                        ".marketHolderExpanded:nth-child(30) td, " +
-                        ".marketHolderExpanded:nth-child(31) td")
+                new DNB(homeTeamName, awayTeamName, "td"),
+                new OU("td")
         );
 
         Map<String, List<Ratio>> main = getGroupedRatios(marketsContainer, markets);

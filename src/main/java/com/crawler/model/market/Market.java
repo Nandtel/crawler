@@ -7,4 +7,5 @@ public interface Market {
 
     Ratio getRatio(Element element);
     String getSelector();
+    String getDescStartWith();
 }

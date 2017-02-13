@@ -83,15 +83,14 @@ public class JsoupServiceTest {
     public void shouldGroupedRatiosBeMatched() {
         String homeTeamName = "Бернли";
         String awayTeamName = "Челси";
-        Elements marketsContainerResult = page.select("div#allMarketsTab div#primaryCollectionContainer");
+        Elements marketsContainerResult = page.select("div#allMarketsTab div#primaryCollectionContainer .marketHolderExpanded");
 
         List<Market> markets = Arrays.asList(
-                new X12(homeTeamName, awayTeamName, ".marketHolderExpanded:nth-child(1) td"),
-                new DC(homeTeamName, awayTeamName,".marketHolderExpanded:nth-child(25) td")
+                new X12(homeTeamName, awayTeamName, "td"),
+                new DC(homeTeamName, awayTeamName,"td")
         );
 
         Map<String, List<Ratio>> testable = jsoupService.getGroupedRatios(marketsContainerResult, markets);
-        testable.entrySet().stream().forEach(System.out::println);
 
 
         Map<String, List<Ratio>> main = new HashMap<>();
