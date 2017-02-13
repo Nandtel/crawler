@@ -9,7 +9,6 @@ import com.crawler.model.market.X12;
 import com.crawler.service.JsoupService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -20,9 +19,9 @@ import org.junit.runner.RunWith;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -39,12 +38,11 @@ public class JsoupServiceTest {
     public static void setUp() throws IOException {
         Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 
-        File html = new ClassPathResource("burnley-chelsea.html").getFile();
-        page = Jsoup.parse(html, "UTF-8", "http://sports.williamhill.com/");
+        InputStream inputStreamHtml = new ClassPathResource("burnley-chelsea.html").getInputStream();
+        page = Jsoup.parse(inputStreamHtml, "UTF-8", "http://sports.williamhill.com/");
 
-        File json = new ClassPathResource("burnley-chelsea.json").getFile();
-        JsonReader jsonReader = new JsonReader(new FileReader(json));
-        Sport sport = gson.fromJson(jsonReader, Sport.class);
+        InputStream inputStreamJson = new ClassPathResource("burnley-chelsea.json").getInputStream();
+        Sport sport = gson.fromJson(new InputStreamReader(inputStreamJson, "UTF-8"), Sport.class);
         resultJson = gson.toJson(sport);
 
         jsoupService = new JsoupService();
@@ -113,8 +111,8 @@ public class JsoupServiceTest {
 
     @Test
     public void shouldGetPageByPathBeMatched() throws IOException {
-        File file = new ClassPathResource("burnley-chelsea.html").getFile();
-        String page = Jsoup.parse(file, "UTF-8", "http://sports.williamhill.com/").text();
+        InputStream inputStream = new ClassPathResource("burnley-chelsea.html").getInputStream();
+        String page = Jsoup.parse(inputStream, "UTF-8", "http://sports.williamhill.com/").text();
         String testable = jsoupService.getPage(new ClassPathResource("burnley-chelsea.html")).text();
 
         Assert.assertEquals(page, testable);

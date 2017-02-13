@@ -13,8 +13,8 @@ import org.jsoup.select.Elements;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -30,8 +30,8 @@ public class JsoupService {
     }
 
     public Document getPage(ClassPathResource path) throws IOException {
-        File file = new ClassPathResource("burnley-chelsea.html").getFile();
-        return Jsoup.parse(file, "UTF-8", "http://sports.williamhill.com/");
+        InputStream inputStream = new ClassPathResource("burnley-chelsea.html").getInputStream();
+        return Jsoup.parse(inputStream, "UTF-8", "http://sports.williamhill.com/");
     }
 
     public String getName(Document page, String selector) {
