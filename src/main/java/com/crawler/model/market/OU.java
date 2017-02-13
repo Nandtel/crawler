@@ -6,8 +6,8 @@ import org.jsoup.nodes.Element;
 import java.util.NoSuchElementException;
 
 public class OU implements Market {
-    final Type type;
-    final String selector;
+    private final Type type;
+    private final String selector;
 
     public OU(String selector) {
         this.selector = selector;

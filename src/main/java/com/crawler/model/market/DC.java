@@ -6,10 +6,10 @@ import org.jsoup.nodes.Element;
 import java.util.NoSuchElementException;
 
 public class DC implements Market {
-    final Type type;
-    final String selector;
-    final String home;
-    final String away;
+    private final Type type;
+    private final String selector;
+    private final String home;
+    private final String away;
 
     public DC(String home, String away, String selector) {
         this.home = home;
