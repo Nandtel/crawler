@@ -1,0 +1,338 @@
+{
+  "sport": "Футбол",
+  "leagues": [
+    {
+      "name": "Англия - Премьер-лига",
+      "events": [
+        {
+          "home": "Бернли",
+          "away": "Челси",
+          "started_at": "12 Фев -13:30 UK",
+          "periods": {
+            "time1": {},
+            "time2": {},
+            "main": {
+              "CS": [
+                {
+                  "betVariation": "CS",
+                  "value": 1.0,
+                  "koef": 17.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 2.0,
+                  "koef": 51.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 2.1,
+                  "koef": 23.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.0,
+                  "koef": 101.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.1,
+                  "koef": 67.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.2,
+                  "koef": 67.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.0,
+                  "koef": 201.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.1,
+                  "koef": 151.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.2,
+                  "koef": 151.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.3,
+                  "koef": 201.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 5.0,
+                  "koef": 501.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 5.1,
+                  "koef": 501.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 5.2,
+                  "koef": 501.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 6.2,
+                  "koef": 501.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 0.0,
+                  "koef": 11.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 1.1,
+                  "koef": 9.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 2.2,
+                  "koef": 23.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.3,
+                  "koef": 81.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.4,
+                  "koef": 201.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 1.0,
+                  "koef": 6.5
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 2.0,
+                  "koef": 6.5
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 2.1,
+                  "koef": 8.5
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.0,
+                  "koef": 9.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.1,
+                  "koef": 13.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 3.2,
+                  "koef": 34.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.0,
+                  "koef": 15.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.1,
+                  "koef": 21.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.2,
+                  "koef": 51.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 4.3,
+                  "koef": 126.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 5.0,
+                  "koef": 41.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 5.1,
+                  "koef": 51.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 5.2,
+                  "koef": 126.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 6.0,
+                  "koef": 101.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 6.1,
+                  "koef": 126.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 6.2,
+                  "koef": 251.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 7.0,
+                  "koef": 251.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 7.1,
+                  "koef": 251.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 8.0,
+                  "koef": 501.0
+                },
+                {
+                  "betVariation": "CS",
+                  "value": 9.0,
+                  "koef": 501.0
+                }
+              ],
+              "BTS": [
+                {
+                  "betVariation": "Y",
+                  "value": null,
+                  "koef": 2.15
+                },
+                {
+                  "betVariation": "N",
+                  "value": null,
+                  "koef": 1.65
+                }
+              ],
+              "OU": [
+                {
+                  "betVariation": "TO",
+                  "value": 0.5,
+                  "koef": 11.0
+                },
+                {
+                  "betVariation": "TU",
+                  "value": 0.5,
+                  "koef": 1.03
+                },
+                {
+                  "betVariation": "TO",
+                  "value": 1.5,
+                  "koef": 3.75
+                },
+                {
+                  "betVariation": "TU",
+                  "value": 1.5,
+                  "koef": 1.25
+                },
+                {
+                  "betVariation": "TO",
+                  "value": 2.5,
+                  "koef": 1.91
+                },
+                {
+                  "betVariation": "TU",
+                  "value": 2.5,
+                  "koef": 1.91
+                },
+                {
+                  "betVariation": "TO",
+                  "value": 3.5,
+                  "koef": 1.33
+                },
+                {
+                  "betVariation": "TU",
+                  "value": 3.5,
+                  "koef": 3.25
+                },
+                {
+                  "betVariation": "TO",
+                  "value": 4.5,
+                  "koef": 1.1
+                },
+                {
+                  "betVariation": "TU",
+                  "value": 4.5,
+                  "koef": 6.5
+                },
+                {
+                  "betVariation": "TO",
+                  "value": 5.5,
+                  "koef": 1.02
+                },
+                {
+                  "betVariation": "TU",
+                  "value": 5.5,
+                  "koef": 13.0
+                }
+              ],
+              "DNB": [
+                {
+                  "betVariation": "DNB1",
+                  "value": null,
+                  "koef": 6.0
+                },
+                {
+                  "betVariation": "DNB2",
+                  "value": null,
+                  "koef": 1.11
+                }
+              ],
+              "1X2": [
+                {
+                  "betVariation": "1",
+                  "value": null,
+                  "koef": 9.0
+                },
+                {
+                  "betVariation": "X",
+                  "value": null,
+                  "koef": 4.5
+                },
+                {
+                  "betVariation": "2",
+                  "value": null,
+                  "koef": 1.4
+                }
+              ],
+              "DC": [
+                {
+                  "betVariation": "1X",
+                  "value": null,
+                  "koef": 2.62
+                },
+                {
+                  "betVariation": "X2",
+                  "value": null,
+                  "koef": 1.05
+                },
+                {
+                  "betVariation": "12",
+                  "value": null,
+                  "koef": 1.18
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
