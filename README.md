@@ -3,7 +3,7 @@
 ## How to run:
 Clone repo: 
 ```
-https://github.com/Nandtel/crawler.git
+git clone https://github.com/Nandtel/crawler.git
 ```
 
 Then run:
