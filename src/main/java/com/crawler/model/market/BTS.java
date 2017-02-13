@@ -10,9 +10,8 @@ public class BTS implements Market {
     private final String selector;
     private final String descStartWith;
 
-    public BTS(String selector) {
-        this.selector = selector;
-
+    public BTS() {
+        this.selector = "td";
         this.type = Type.BTS;
         this.descStartWith = "Обе команды забьют";
     }

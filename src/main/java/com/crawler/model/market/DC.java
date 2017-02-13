@@ -12,11 +12,11 @@ public class DC implements Market {
     private final String away;
     private final String descStartWith;
 
-    public DC(String home, String away, String selector) {
+    public DC(String home, String away) {
         this.home = home;
         this.away = away;
-        this.selector = selector;
 
+        this.selector = "td";
         this.type = Type.DC;
         this.descStartWith = "Двойной шанс";
     }

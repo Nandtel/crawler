@@ -12,11 +12,11 @@ public class X12 implements Market {
     private final String away;
     private final String descStartWith;
 
-    public X12(String home, String away, String selector) {
+    public X12(String home, String away) {
         this.home = home;
         this.away = away;
-        this.selector = selector;
 
+        this.selector = "td";
         this.type = Type.X12;
         this.descStartWith = "1 X 2";
     }

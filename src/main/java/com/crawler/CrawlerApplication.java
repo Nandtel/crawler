@@ -1,6 +1,7 @@
 package com.crawler;
 
 import com.crawler.config.ParseProperties;
+import com.crawler.model.market.Type;
 import com.crawler.service.JsoupService;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @SpringBootApplication
@@ -48,7 +51,16 @@ public class CrawlerApplication {
 					throw new NoSuchElementException();
 			}
 
-			String sportJson = jsoupService.getSportJson(page);
+			List<Type> typeToParsing = Arrays.asList(
+					Type.X12,
+					Type.DC,
+					Type.BTS,
+					Type.CS,
+					Type.DNB,
+					Type.OU
+			);
+
+			String sportJson = jsoupService.getSportJson(page, typeToParsing);
 			System.out.println(sportJson);
 		};
 	}

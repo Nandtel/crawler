@@ -10,9 +10,8 @@ public class CS implements Market {
     private final String selector;
     private final String descStartWith;
 
-    public CS(String selector) {
-        this.selector = selector;
-
+    public CS() {
+        this.selector = "td li";
         this.type = Type.CS;
         this.descStartWith = "Точный счет";
     }

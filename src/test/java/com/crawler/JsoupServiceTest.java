@@ -2,10 +2,7 @@ package com.crawler;
 
 import com.crawler.model.Ratio;
 import com.crawler.model.Sport;
-import com.crawler.model.market.DC;
-import com.crawler.model.market.Market;
-import com.crawler.model.market.Type;
-import com.crawler.model.market.X12;
+import com.crawler.model.market.*;
 import com.crawler.service.JsoupService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,10 +19,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
 public class JsoupServiceTest {
@@ -50,7 +45,16 @@ public class JsoupServiceTest {
 
     @Test
     public void shouldJsonBeMatched() throws Exception {
-        String testedJson = jsoupService.getSportJson(page);
+        List<Type> typeToParsing = Arrays.asList(
+                Type.X12,
+                Type.DC,
+                Type.BTS,
+                Type.CS,
+                Type.DNB,
+                Type.OU
+        );
+
+        String testedJson = jsoupService.getSportJson(page, typeToParsing);
         Assert.assertEquals(resultJson, testedJson);
     }
 
@@ -85,10 +89,18 @@ public class JsoupServiceTest {
         String awayTeamName = "Челси";
         Elements marketsContainerResult = page.select("div#allMarketsTab div#primaryCollectionContainer .marketHolderExpanded");
 
-        List<Market> markets = Arrays.asList(
-                new X12(homeTeamName, awayTeamName, "td"),
-                new DC(homeTeamName, awayTeamName,"td")
+        List<Type> typeToParsing = Arrays.asList(
+                Type.X12,
+                Type.DC
         );
+
+        Stream<Market> markets = typeToParsing.parallelStream().map(type -> {
+            switch (type) {
+                case X12: return new X12(homeTeamName, awayTeamName);
+                case DC: return new DC(homeTeamName, awayTeamName);
+                default: throw new NoSuchElementException();
+            }
+        });
 
         Map<String, List<Ratio>> testable = jsoupService.getGroupedRatios(marketsContainerResult, markets);
 

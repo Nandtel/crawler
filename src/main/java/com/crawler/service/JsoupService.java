@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -30,7 +31,7 @@ public class JsoupService {
     }
 
     public Document getPage(ClassPathResource path) throws IOException {
-        InputStream inputStream = new ClassPathResource("burnley-chelsea.html").getInputStream();
+        InputStream inputStream = path.getInputStream();
         return Jsoup.parse(inputStream, "UTF-8", "http://sports.williamhill.com/");
     }
 
@@ -50,9 +51,8 @@ public class JsoupService {
         return page.select(selector);
     }
 
-    public Map<String, List<Ratio>> getGroupedRatios(Elements marketsContainer, List<Market> markets) {
+    public Map<String, List<Ratio>> getGroupedRatios(Elements marketsContainer, Stream<Market> markets) {
         return markets
-                .parallelStream()
                 .flatMap(market -> marketsContainer.parallelStream()
                         .filter(el -> el.select("thead>tr>th.leftPad>span").text().toLowerCase()
                                     .startsWith(market.getDescStartWith().toLowerCase()))
@@ -62,7 +62,7 @@ public class JsoupService {
                 .collect(groupingBy(ratio -> ratio.getType().toString()));
     }
 
-    public String getSportJson(Document page) {
+    public String getSportJson(Document page, List<Type> typeToParsing) {
         String sportName = getName(page, "#breadcrumb li:nth-child(2) a");
         String leagueName = getName(page, "#breadcrumb li:nth-child(4) a");
         String homeTeamName = getTeamName(page, "#contentHead h2", 0);
@@ -70,14 +70,17 @@ public class JsoupService {
         String startedAtDate = getStartedAtDate(page, "#contentHead > span#eventDetailsHeader span", "Закрытие :");
         Elements marketsContainer = getMarketsContainer(page, "div#allMarketsTab div#primaryCollectionContainer .marketHolderExpanded");
 
-        List<Market> markets = Arrays.asList(
-                new X12(homeTeamName, awayTeamName, "td"),
-                new DC(homeTeamName, awayTeamName,"td"),
-                new BTS("td"),
-                new CS("td li"),
-                new DNB(homeTeamName, awayTeamName, "td"),
-                new OU("td")
-        );
+        Stream<Market> markets = typeToParsing.parallelStream().map(type -> {
+            switch (type) {
+                case X12: return new X12(homeTeamName, awayTeamName);
+                case DC: return new DC(homeTeamName, awayTeamName);
+                case BTS: return new BTS();
+                case CS: return new CS();
+                case DNB: return new DNB(homeTeamName, awayTeamName);
+                case OU: return new OU();
+                default: throw new NoSuchElementException();
+            }
+        });
 
         Map<String, List<Ratio>> main = getGroupedRatios(marketsContainer, markets);
 

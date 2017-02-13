@@ -10,9 +10,8 @@ public class OU implements Market {
     private final String selector;
     private final String descStartWith;
 
-    public OU(String selector) {
-        this.selector = selector;
-
+    public OU() {
+        this.selector = "td";
         this.type = Type.OU;
         this.descStartWith = "Тотал голов в матче больше";
     }
