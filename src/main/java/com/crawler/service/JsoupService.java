@@ -74,7 +74,7 @@ public class JsoupService {
                 new X12(homeTeamName, awayTeamName, "td"),
                 new DC(homeTeamName, awayTeamName,"td"),
                 new BTS("td"),
-                new CS(".marketHolderExpanded:nth-child(6) td li"),
+                new CS("td li"),
                 new DNB(homeTeamName, awayTeamName, "td"),
                 new OU("td")
         );
