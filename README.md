@@ -52,3 +52,6 @@ You can run tests:
 ```
 ./gradlew tests
 ```
+
+## License
+The MIT License (MIT)
